@@ -1,0 +1,29 @@
+{
+	"words": [
+		{
+			"name": "Peace",
+			"options": ["Peece", "Pease", "Peace"],
+			"display": "Peece"
+		},
+		{
+			"name": "Pepper",
+			"options": ["Pepper", "Peperr", "peper"],
+			"display": "Peper"
+		},
+				{
+			"name": "Address",
+			"options": ["Adress", "Address", "Addres"],
+			"display": "Adress"
+		},
+				{
+			"name": "Argument",
+			"options": ["Arguement", "Argument", "Argumint"],
+			"display": "Arguement"
+		},
+				{
+			"name": "Beginning",
+			"options": ["Begining", "Begenin", "Beginning"],
+			"display": "Beginning"
+		}
+	]
+}
