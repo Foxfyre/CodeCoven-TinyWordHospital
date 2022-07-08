@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WordGenerator : MonoBehaviour
 {
     public TextAsset textJSON;
-
+    public Text txt;
     [System.Serializable]
     public class Word
     {
@@ -21,11 +22,12 @@ public class WordGenerator : MonoBehaviour
     }
 
     public WordList myWordList = new WordList();
-
+    public ArrayList selectedNumbers = new ArrayList();
     public GameObject[] blocksArr;
     public List<int> selectedBlocks = new List<int>();
     public int wordCount = 3;
     int rng;
+    int wordRng;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +45,50 @@ public class WordGenerator : MonoBehaviour
             }
             else
             {
-                selectedBlocks.Add(Random.Range(0, randSelect));
-                Debug.Log(selectedBlocks[i]);
+                selectedBlocks.Add(rng);
+
             }
         }
+
+        //print(myWordList.words[1].name);
+
+        /*foreach (var item in myWordList.words)
+        {
+            print(item.name);
+            // Parse items into data struct
+        }*/
+
         for (int i = 0; i < selectedBlocks.Count; i++)
         {
+            wordRng = Random.Range(0, myWordList.words.Length);
+            print(wordRng);
+            print(selectedNumbers.Contains(wordRng));
+            //selectedNumbers.Add(wordRng);
+            object wordObject;
+
+            if (selectedNumbers.Contains(wordRng))
+            {
+                while (selectedNumbers.Contains(wordRng))
+                {
+                    wordRng = Random.Range(0, myWordList.words.Length);
+                }
+                selectedNumbers.Add(wordRng);
+                wordObject = myWordList.words[wordRng];
+                print(wordRng);
+            }
+            else
+            {
+                selectedNumbers.Add(wordRng);
+                wordObject = myWordList.words[wordRng];
+            }
+
+
+            //get a word from myWordList
             GameObject GO = blocksArr[selectedBlocks[i]];
+            GameObject.Find("Text");
+            txt = GO.GetComponentInChildren<Text>();
+            txt.text = myWordList.words[wordRng].display;
+            GO.tag = "word";
             GO.GetComponent<SpriteRenderer>().color = Color.green;
         }
     }
