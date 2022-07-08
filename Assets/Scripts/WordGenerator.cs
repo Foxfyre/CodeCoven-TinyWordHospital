@@ -89,7 +89,7 @@ public class WordGenerator : MonoBehaviour
             txt = GO.GetComponentInChildren<Text>();
             txt.text = myWordList.words[wordRng].display;
             GO.tag = "word";
-            GO.GetComponent<SpriteRenderer>().color = Color.green;
+            GO.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
