@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class WordGenerator : MonoBehaviour
 {
-    public TextAsset textJSON;
+    //public TextAsset textJSON;
     public Text txt;
-    [System.Serializable]
+    /*[System.Serializable]
     public class Word
     {
         public string name;
@@ -19,9 +19,10 @@ public class WordGenerator : MonoBehaviour
     public class WordList
     {
         public Word[] words;
-    }
+    }*/
 
-    public WordList myWordList = new WordList();
+    //public WordList myWordList = new WordList();
+    private WordImporter.WordList myWordList = new WordImporter.WordList();
     public ArrayList selectedNumbers = new ArrayList();
     public GameObject[] blocksArr;
     public List<int> selectedBlocks = new List<int>();
@@ -32,8 +33,9 @@ public class WordGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myWordList = JsonUtility.FromJson<WordList>(textJSON.text);
-
+        //myWordList = JsonUtility.FromJson<WordList>(textJSON.text);
+        myWordList = FindObjectOfType<WordImporter>().SendWords();
+        Debug.Log(myWordList);
         // on start, choose x amount of blocks from the block array & "replace" them with word object. 
         int randSelect = blocksArr.Length;
         for (int i = 0; i < wordCount; i++)
