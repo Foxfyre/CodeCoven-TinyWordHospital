@@ -7,7 +7,7 @@
 		},
 		{
 			"name": "Pepper",
-			"options": ["Pepper", "Peperr", "peper"],
+			"options": ["Pepper", "Peperr", "Peper"],
 			"display": "Peper"
 		},
 		{
