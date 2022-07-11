@@ -15,6 +15,7 @@ public class WordDisplay : MonoBehaviour
     void Start()
     {
         myWordList = FindObjectOfType<WordImporter>().SendWords();
+        print(myWordList.words.Length);
     }
 
     // Update is called once per frame
@@ -26,18 +27,22 @@ public class WordDisplay : MonoBehaviour
 
         if (gurneyText.enabled == true)
         {
+
             //print(gurneyString);
             for (int i = 0; i < myWordList.words.Length; i++)
             {
-                //print(myWordList.words[i].name == gurneyString);
+                Debug.Log("WORD DISPLAY FIRING");
+                print(myWordList.words[i].name == gurneyString);
                 options = myWordList.words[i].options;
                 if (options.Contains(gurneyString))
                 {
-                    option1 = myWordList.words[i].options[0];
-                    option2 = myWordList.words[i].options[1];
-                    option3 = myWordList.words[i].options[2];
 
+                    option1 = options[0];
+                    option2 = options[1];
+                    option3 = options[2];
+                    print(option1);
                 }
+
             }
 
 

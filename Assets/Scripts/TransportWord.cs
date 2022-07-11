@@ -22,11 +22,11 @@ public class TransportWord : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && canPickup == true && label == "word" && hasWord == false)
         {
-            print("YOU CAN PICK UP THE WORD!");
+            //print("YOU CAN PICK UP THE WORD!");
             //gets the game object information from the object collided into
             GameObject gO = GameObject.Find(collisionName);
             txt = gO.GetComponentInChildren<Text>();
-            print(txt.text);
+            //print(txt.text);
             //txt.text = wordObject.display;
 
             //gets the game object of the ambulance
