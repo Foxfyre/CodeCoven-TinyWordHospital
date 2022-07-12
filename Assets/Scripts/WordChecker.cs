@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class WordChecker : MonoBehaviour
 {
 
-    bool canDrop;
-    bool hasWord;
+    bool canDrop = false;
+    public bool hasWord = false;
     string collisionName;
     GameObject Ambulance;
     Text theWord;
@@ -43,6 +43,7 @@ public class WordChecker : MonoBehaviour
             GameObject dCamera = GameObject.Find("WordDisplayCamera");
             dCamera.GetComponent<Camera>().enabled = true;
             canDrop = false;
+            hasWord = false;
         }
     }
 
@@ -58,7 +59,7 @@ public class WordChecker : MonoBehaviour
 
         if (Ambulance != null)
         {
-            hasWord = Ambulance.GetComponentInChildren<SpriteRenderer>().enabled;
+            hasWord = Ambulance.GetComponentInChildren<Text>().enabled;
             Text theWord = Ambulance.GetComponentInChildren<Text>();
             brokenWord = theWord.text;
             //print(brokenWord);

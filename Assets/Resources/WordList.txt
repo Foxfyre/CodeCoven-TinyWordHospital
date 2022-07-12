@@ -22,8 +22,13 @@
 		},
 		{
 			"name": "Beginning",
-			"options": ["Begining", "Begenin", "Beginning"],
-			"display": "Beginning"
+			"options": ["Beginnning", "Begenin", "Beginning"],
+			"display": "Beginnning"
+		},
+		{
+			"name": "Dragon",
+			"options": ["Draggon", "Dragin", "Dragon"],
+			"display": "Dragin"
 		}
 	]
 }
