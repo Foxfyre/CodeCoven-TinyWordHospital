@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
 
-    public float moveSpeed = 10.0f;
+    public float moveSpeed = 3.0f;
     public float moveLimiter = 0.7f;
 
     // Start is called before the first frame update
