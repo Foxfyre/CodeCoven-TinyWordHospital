@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -37,17 +38,27 @@ public class ScoreManager : MonoBehaviour
         if (score == 2)
         {
             emptyHeart2.GetComponent<Image>().enabled = false;
-            fullHeart2.GetComponent <Image>().enabled = true;
+            fullHeart2.GetComponent<Image>().enabled = true;
         }
         if (score == 3)
         {
             emptyHeart3.GetComponent<Image>().enabled = false;
-            fullHeart3.GetComponent <Image>().enabled = true;
+            fullHeart3.GetComponent<Image>().enabled = true;
+
         }
 
         print(score);
         WordChecker.ResetPlayer();
         WordDisplay.DisplayReset();
         TransportWord.ResetTransport();
+        
+
+        if (score == 3)
+        {
+            SceneManager.LoadScene("Win Scene");
+            score = 0;
+        }
+
     }
+
 }
