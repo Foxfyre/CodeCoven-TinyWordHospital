@@ -42,6 +42,7 @@ public class WordChecker : MonoBehaviour
 
             GameObject dCamera = GameObject.Find("WordDisplayCamera");
             dCamera.GetComponent<Camera>().enabled = true;
+            canDrop = false;
         }
     }
 
@@ -60,7 +61,7 @@ public class WordChecker : MonoBehaviour
             hasWord = Ambulance.GetComponentInChildren<SpriteRenderer>().enabled;
             Text theWord = Ambulance.GetComponentInChildren<Text>();
             brokenWord = theWord.text;
-            print(brokenWord);
+            //print(brokenWord);
         }
     }
 
@@ -68,5 +69,22 @@ public class WordChecker : MonoBehaviour
     {
         canDrop = false;
         collisionName = "";
+    }
+
+    //Add function to reset the bools
+    public static void ResetPlayer()
+    {
+        GameObject gurney = GameObject.Find("WordGurney");
+        Text gurneyText = gurney.GetComponentInChildren<Text>();
+        gurneyText.text = "";
+        gurneyText.enabled = false;
+        gurney.GetComponent<SpriteRenderer>().enabled = false;
+
+        GameObject mCamera = GameObject.Find("Main Camera");
+        mCamera.GetComponent<Camera>().enabled = true;
+
+        GameObject dCamera = GameObject.Find("WordDisplayCamera");
+        dCamera.GetComponent<Camera>().enabled = false;
+
     }
 }

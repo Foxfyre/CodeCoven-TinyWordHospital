@@ -10,7 +10,7 @@ public class TransportWord : MonoBehaviour
     string label;
     string collisionName;
     public Text txt;
-    bool hasWord;
+    static bool hasWord;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +58,10 @@ public class TransportWord : MonoBehaviour
     {
         canPickup = false;
         label = "";
+    }
+
+    public static void ResetTransport()
+    {
+        hasWord = false;
     }
 }
