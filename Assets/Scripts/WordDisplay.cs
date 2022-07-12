@@ -12,8 +12,14 @@ public class WordDisplay : MonoBehaviour
     string option2;
     string option3;
 
+    public Button FirstSelection, SecondSelection, ThirdSelection;
+
+
     void Start()
     {
+        FirstSelection.onClick.AddListener(() => CheckWord(option2));
+        SecondSelection.onClick.AddListener(() => CheckWord(option2));
+        ThirdSelection.onClick.AddListener(() => CheckWord(option3));
         myWordList = FindObjectOfType<WordImporter>().SendWords();
         print(myWordList.words.Length);
     }
@@ -31,20 +37,18 @@ public class WordDisplay : MonoBehaviour
             //print(gurneyString);
             for (int i = 0; i < myWordList.words.Length; i++)
             {
-                Debug.Log("WORD DISPLAY FIRING");
-                print(myWordList.words[i].name == gurneyString);
+                //Debug.Log("WORD DISPLAY FIRING");
+                //print(myWordList.words[i].name == gurneyString);
                 options = myWordList.words[i].options;
                 if (options.Contains(gurneyString))
                 {
-
                     option1 = options[0];
                     option2 = options[1];
                     option3 = options[2];
-                    print(option1);
+                    //print(option1);
                 }
 
             }
-
 
             GameObject wordDisplay1 = GameObject.Find("WordChoice1");
             Text WordDisplay1Text = wordDisplay1.GetComponentInChildren<Text>();
@@ -60,6 +64,40 @@ public class WordDisplay : MonoBehaviour
             Text WordDisplay3Text = wordDisplay3.GetComponentInChildren<Text>();
             WordDisplay3Text.text = option3;
             WordDisplay3Text.enabled = true;
+
+            
+
         }
     }
+
+    void CheckWord(string option)
+    {
+        print("Button Clicked!");
+        myWordList = FindObjectOfType<WordImporter>().SendWords();
+
+        GameObject gurney = GameObject.Find("WordGurney");
+        Text gurneyText = gurney.GetComponentInChildren<Text>();
+        string gurneyString = gurneyText.text;
+
+        string correctAnswer = "";
+
+        for (int i = 0; i < myWordList.words.Length; i++)
+        {
+            if (options.Contains(gurneyString))
+            {
+                correctAnswer = myWordList.words[i].name;
+            }
+        }
+
+        if (option == correctAnswer)
+        {
+            Debug.Log("YES!");
+        }
+        else
+        {
+            Debug.Log("No!");
+        }
+    }
+
+
 }
