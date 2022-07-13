@@ -76,35 +76,40 @@ public class WordDisplay : MonoBehaviour
 
     void CheckWord(string option)
     {
-        myWordList = FindObjectOfType<WordImporter>().SendWords();
-
-        GameObject gurney = GameObject.Find("WordGurney");
-        Text gurneyText = gurney.GetComponentInChildren<Text>();
-        string gurneyString = gurneyText.text;
-        string correctAnswer = "";
-
-        //Get selected word
-        //Find word options that contain the gurney word
-        //Compare selected word to Name of word object. 
-        for (int b = 0; b < myWordList.words.Length; b++)
+        GameObject dCamera = GameObject.Find("WordDisplayCamera");
+        if (dCamera.GetComponent<Camera>().enabled == true)
         {
-            if (myWordList.words[b].options.Contains(gurneyString))
+            myWordList = FindObjectOfType<WordImporter>().SendWords();
+
+            GameObject gurney = GameObject.Find("WordGurney");
+            Text gurneyText = gurney.GetComponentInChildren<Text>();
+            string gurneyString = gurneyText.text;
+            string correctAnswer = "";
+
+            //Get selected word
+            //Find word options that contain the gurney word
+            //Compare selected word to Name of word object. 
+            for (int b = 0; b < myWordList.words.Length; b++)
             {
-                correctAnswer = myWordList.words[b].name;
+                if (myWordList.words[b].options.Contains(gurneyString))
+                {
+                    correctAnswer = myWordList.words[b].name;
+                }
             }
-        }
 
-        print("The correct answer is " + correctAnswer);
-        print("You selected " +option);
 
-        if (option == correctAnswer)
-        {
-            Debug.Log("YES!");
-            ScoreManager.UpdateScoreDisplay();
-        }
-        else
-        {
-            Debug.Log("No!");
+
+            print(dCamera.GetComponent<Camera>().enabled);
+            if (option == correctAnswer)
+            {
+                Debug.Log("YES!");
+                ScoreManager.UpdateScoreDisplay();
+            }
+            else
+            {
+                Debug.Log("No!");
+                StartCoroutine(ActivationRoutine());
+            }
         }
     }
 
@@ -124,8 +129,20 @@ public class WordDisplay : MonoBehaviour
         Text WordDisplay3Text = wordDisplay3.GetComponentInChildren<Text>();
         WordDisplay3Text.text = "";
         WordDisplay3Text.enabled = false;
+    }
 
-        
+    private IEnumerator ActivationRoutine()
+    {
+        GameObject incorrect = GameObject.Find("Sorry");
+        Text iText = incorrect.GetComponentInChildren<Text>();
+        //Turn my game object that is set to false(off) to True(on)
+        iText.enabled = true;
+
+        //Turn my game object back off after 1 sec.
+        yield return new WaitForSeconds(4);
+
+        //Game object will turn off
+        iText.enabled = false;
     }
 
 
