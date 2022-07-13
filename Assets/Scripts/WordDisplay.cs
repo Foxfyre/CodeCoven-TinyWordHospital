@@ -134,15 +134,18 @@ public class WordDisplay : MonoBehaviour
     private IEnumerator ActivationRoutine()
     {
         GameObject incorrect = GameObject.Find("Sorry");
+        GameObject sb = GameObject.Find("SorryBackground");
         Text iText = incorrect.GetComponentInChildren<Text>();
+        Image image = sb.GetComponentInChildren<Image>();
         //Turn my game object that is set to false(off) to True(on)
         iText.enabled = true;
-
+        image.enabled = true;
         //Turn my game object back off after 1 sec.
         yield return new WaitForSeconds(4);
 
         //Game object will turn off
         iText.enabled = false;
+        image.enabled = false;
     }
 
 
